@@ -1,0 +1,42 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.fc.idea-plugins-vmoptions</id>
+
+    <version>1.0.0</version>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>Idea-plugins-vmoptions</name>
+    <idea-version  since-build="241" until-build="242.*">
+    </idea-version>>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor url="https://www.yourcompany.com">fc</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <description><![CDATA[
+        A plugin that automatically injects Dubbo IP configuration into VM options when running Java applications.<br>
+        <em>This plugin adds -DDUBBO_IP_TO_BIND and -DDUBBO_IP_TO_REGISTRY VM options with local IP address</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      <em>Initial release:</em>
+      <ul>
+        <li>Automatically updates Dubbo IP VM options on run/debug.</li>
+      </ul>
+    ]]></change-notes>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <runConfigurationExtension implementation="com.fc.ideapluginsvmoptions.DubboIpRunConfigurationExtension"/>
+<!--        <notificationGroup id="dubbo-ip-updater.notification" displayType="BALLOON" />-->
+    </extensions>
+</idea-plugin>
